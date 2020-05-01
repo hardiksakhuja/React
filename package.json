@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "4.0.0",
+    "lite-server": "^2.5.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-popper": "0.9.2",
@@ -14,7 +15,7 @@
     "reactstrap": "5.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && npm run lite-sever",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
