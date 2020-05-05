@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { LocalForm, Control, Errors }from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
+import {FadeTransform, Fade , Stagger } from 'react-animation-components';
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len)
@@ -104,6 +105,8 @@ function RenderComments({ comments, postComment, dishId }) {
         <h4>Comments</h4>
         {comments.map(comment => (
           <ul key={comment.id} className="list-unstyled">
+              <Stagger in>
+                  <Fade in>
             <li className="mb-2">{comment.comment}</li>
             <li>
               -- {comment.author}{" "}
@@ -113,6 +116,8 @@ function RenderComments({ comments, postComment, dishId }) {
                 day: "2-digit"
               }).format(new Date(Date.parse(comment.date)))}
             </li>
+            </Fade>
+            </Stagger>
           </ul>
         ))}
         <CommentForm dishId={dishId} postComment={postComment} />     
@@ -154,6 +159,9 @@ function RenderComments({ comments, postComment, dishId }) {
         if(dish!=null) {
             return( 
                             <div className="col-12 col-md-5 m-1">
+                                <FadeTransform in transormProps={{
+            exitTransform: 'scale(0.5) trnaslateY(-50%)'
+        }}>
                                 <Card>
                                 <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                                     <CardBody>
@@ -161,6 +169,7 @@ function RenderComments({ comments, postComment, dishId }) {
                                         <CardText>{dish.description}</CardText>
                                     </CardBody>
                                 </Card>
+                                </FadeTransform>
                             </div>
                     //          <div className="col-12 col-md-5 m-1">
                     //              <h4>Comments</h4>
